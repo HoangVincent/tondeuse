@@ -35,7 +35,6 @@ public enum Direction {
         }
     };
 
-
     public static void tourneGauche(Tondeuse tondeuse) {
         System.out.println("tourne a gauche");
         List<Direction> list = Arrays.asList(Direction.values());
@@ -44,6 +43,18 @@ public enum Direction {
             tondeuse.setDirection(list.get(list.size()-1));
         } else {
             tondeuse.setDirection(list.get(indexDirection - 1));
+        }
+    }
+    public static Direction getInversDirection(Tondeuse tondeuse){
+        System.out.println("get inverse direction");
+        List<Direction> list = Arrays.asList(Direction.values());
+        int indexDirection = list.indexOf(tondeuse.getDirection());
+        if ( indexDirection == list.size()-2) {
+            return list.get(0);
+        } else if ( indexDirection == list.size()-1) {
+            return list.get(1);
+        } else  {
+            return list.get(indexDirection+2);
         }
     }
     public static void tourneDroite(Tondeuse tondeuse) {

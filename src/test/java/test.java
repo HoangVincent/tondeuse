@@ -119,6 +119,25 @@ public class test {
     }
 
     @Test
+    public void shouldReculeUp(){
+        mockTondeuse.setxTemp(3);
+        mockTondeuse.setyTemp(2);
+        mockTondeuse.setDirection(Direction.valueOf("N"));
+        mockTondeuse.validateMove();
+
+        Moteur moteur = init();
+        moteur.setTondeuse(mockTondeuse);
+
+        moteur.run('R');
+        mockTondeuse.validateMove();
+
+        assertEquals(3, mockTondeuse.getxCurrent());
+        assertEquals(1, mockTondeuse.getyCurrent());
+        assertEquals(Direction.N, mockTondeuse.getDirection());
+
+    }
+
+    @Test
     public void shouldAvanceLeft(){
         mockTondeuse.setxTemp(3);
         mockTondeuse.setyTemp(2);

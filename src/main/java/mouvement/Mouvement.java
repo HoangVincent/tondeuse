@@ -23,7 +23,14 @@ public enum Mouvement {
         public void execut(Moteur moteur) {
             Direction.tourneGauche(moteur.getTondeuse());
         }
-    };
+    },
+    R {
+        @Override
+        public void execut (Moteur moteur){
+            Direction.getInversDirection(moteur.getTondeuse()).execut(moteur);
+        }
+    }
+    ;
 
     public abstract void execut(Moteur moteur);
 }
